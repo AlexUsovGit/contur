@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @author - Alexey Usov
  */
@@ -28,5 +31,8 @@ public class ContinentServiceImpl implements ContinentService {
 
     }
 
-
+    @Override
+    public List<String> getAllContinentNames() {
+        return continentRepository.findAll().stream().map(Continent::getName).collect(Collectors.toList());
+    }
 }
